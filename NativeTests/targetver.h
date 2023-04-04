@@ -1,8 +1,14 @@
-#pragma once
+﻿
+/*
+ *   𝓐𝓡𝓢 𝓢𝓒𝓡𝓘𝓟𝓣𝓤𝓜
+ *   🇧​​​​​🇾​​​​​ 🇬​​​​​🇺​​​​​🇮​​​​​🇱​​​​​🇱​​​​​🇦​​​​​🇺​​​​​🇲​​​​​🇪​​​​​🇵​​​​​🇱​​​​​🇦​​​​​🇳​​​​​🇹​​​​​🇪​​​​​.🇶​​​​​🇨​​​​​@🇬​​​​​🇲​​​​​🇦​​​​​🇮​​​​​🇱​​​​​.🇨​​​​​🇴​​​​​🇲​​​​​
+*/
 
-// Including SDKDDKVer.h defines the highest available Windows platform.
+#ifndef __NATIVE_TEST__TARGET_H__
+#define __NATIVE_TEST__TARGET_H__
 
-// If you wish to build your application for a previous Windows platform, include WinSDKVer.h and
-// set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.
 
 #include <SDKDDKVer.h>
+
+
+#endif //__NATIVE_TEST__TARGET_H__

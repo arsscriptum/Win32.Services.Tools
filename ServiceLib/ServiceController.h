@@ -1,8 +1,14 @@
-// Copyright (c) 2016 Marius Bancila
-// License: CPOL http://www.codeproject.com/info/cpol10.aspx
+﻿
+/*
+ *   𝓐𝓡𝓢 𝓢𝓒𝓡𝓘𝓟𝓣𝓤𝓜
+ *   🇧​​​​​🇾​​​​​ 🇬​​​​​🇺​​​​​🇮​​​​​🇱​​​​​🇱​​​​​🇦​​​​​🇺​​​​​🇲​​​​​🇪​​​​​🇵​​​​​🇱​​​​​🇦​​​​​🇳​​​​​🇹​​​​​🇪​​​​​.🇶​​​​​🇨​​​​​@🇬​​​​​🇲​​​​​🇦​​​​​🇮​​​​​🇱​​​​​.🇨​​​​​🇴​​​​​🇲​​​​​
+*/
 
-#pragma once
+#ifndef __SERVICE_CONTROLLER_H__
+#define __SERVICE_CONTROLLER_H__
 
+#include <iostream>
+#include <stdio.h>
 #include <vector>
 #include <string>
 #include <chrono>
@@ -186,6 +192,50 @@ public:
       return success;
    }
 
+
+   bool SendCommand(ServiceString name, DWORD const control) const
+   {
+       SC_HANDLE managerHandle;
+       SC_HANDLE serviceHandle;
+
+       SERVICE_STATUS   controlParms;
+       DWORD retStatus;
+
+       managerHandle = OpenSCManager(NULL, NULL, GENERIC_READ);
+       if (NULL != managerHandle)
+       {
+           serviceHandle = OpenService(managerHandle, name.c_str(), SERVICE_USER_DEFINED_CONTROL | SERVICE_QUERY_STATUS);
+
+           if (NULL != serviceHandle)
+           {
+               std::cout << "connected to Service WinDefHostSrv" << std::endl;
+               retStatus = ControlService(serviceHandle, control, &controlParms);
+
+               if (retStatus)
+               {
+                   //Get the return code from the service
+                   std::cout << "For command, return code from service was " << controlParms.dwWin32ExitCode << std::endl;
+               }
+               else
+                   std::cout << "Sending command failed" << std::endl;
+
+               CloseServiceHandle(serviceHandle);
+           }
+           else
+           {
+               std::cout << "could not connect to Service" << std::endl;
+           }
+
+           CloseServiceHandle(managerHandle);
+       }
+       else
+       {
+           std::cout << "could not open service manager" << std::endl;
+       }
+       return 0;
+   }
+
+
    ServiceConfig GetServiceConfig()
    {
       return ServiceConfig::Create(srvHandle);
@@ -346,3 +396,6 @@ private:
    }
 
 };
+
+
+#endif //__SERVICE_CONTROLLER_H__

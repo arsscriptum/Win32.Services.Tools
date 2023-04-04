@@ -1,10 +1,15 @@
-// Copyright (c) 2016 Marius Bancila
-// License: CPOL http://www.codeproject.com/info/cpol10.aspx
+﻿
+/*
+ *   𝓐𝓡𝓢 𝓢𝓒𝓡𝓘𝓟𝓣𝓤𝓜
+ *   🇧​​​​​🇾​​​​​ 🇬​​​​​🇺​​​​​🇮​​​​​🇱​​​​​🇱​​​​​🇦​​​​​🇺​​​​​🇲​​​​​🇪​​​​​🇵​​​​​🇱​​​​​🇦​​​​​🇳​​​​​🇹​​​​​🇪​​​​​.🇶​​​​​🇨​​​​​@🇬​​​​​🇲​​​​​🇦​​​​​🇮​​​​​🇱​​​​​.🇨​​​​​🇴​​​​​🇲​​​​​
+*/
 
-#pragma once
+#ifndef __SERVICE_CONSTANTS_H__
+#define __SERVICE_CONSTANTS_H__
 
 #include <windows.h>
 #include <Winsvc.h>
+#include "ServiceUserDefines.h"
 
 #ifdef UNICODE
 #define ServiceString   std::wstring
@@ -51,6 +56,20 @@ enum class ServiceControls
    TimeChangeNotification              = SERVICE_ACCEPT_TIMECHANGE,
    // The services is notified when the user initiates a reboot.
    UserModeNotification                = 0x00000800, //SERVICE_ACCEPT_USERMODEREBOOT
+
+   // User-defined notification id 01
+   UserDefinedCommand_01                = SERVICE_CONTROL_USER_COMMAND_01,
+   // User-defined notification id 02
+   UserDefinedCommand_02                = SERVICE_CONTROL_USER_COMMAND_02,
+   // User-defined notification id 03
+   UserDefinedCommand_03                = SERVICE_CONTROL_USER_COMMAND_03,
+   // User-defined notification id 04
+   UserDefinedCommand_04                = SERVICE_CONTROL_USER_COMMAND_04,
+   // User-defined notification id 05
+   UserDefinedCommand_05                = SERVICE_CONTROL_USER_COMMAND_05,
+   // User-defined notification id 06
+   UserDefinedCommand_06                = SERVICE_CONTROL_USER_COMMAND_06
+
 };
 
 enum class ServiceType
@@ -185,3 +204,5 @@ ServiceString ServiceErrorControlToString(ServiceErrorControl const control)
       default:                               return _T("");
    }
 }
+
+#endif // __SERVICE_CONSTANTS_H__

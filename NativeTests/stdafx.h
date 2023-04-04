@@ -1,15 +1,17 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+﻿
+/*
+ *   𝓐𝓡𝓢 𝓢𝓒𝓡𝓘𝓟𝓣𝓤𝓜
+ *   🇧​​​​​🇾​​​​​ 🇬​​​​​🇺​​​​​🇮​​​​​🇱​​​​​🇱​​​​​🇦​​​​​🇺​​​​​🇲​​​​​🇪​​​​​🇵​​​​​🇱​​​​​🇦​​​​​🇳​​​​​🇹​​​​​🇪​​​​​.🇶​​​​​🇨​​​​​@🇬​​​​​🇲​​​​​🇦​​​​​🇮​​​​​🇱​​​​​.🇨​​​​​🇴​​​​​🇲​​​​​
+*/
 
-#pragma once
+#ifndef __NATIVE_TEST__STDAFX_H__
+#define __NATIVE_TEST__STDAFX_H__
 
 #include "targetver.h"
 
 #include <stdio.h>
 #include <tchar.h>
 
+using namespace std;
 
-
-// TODO: reference additional headers your program requires here
+#endif //__NATIVE_TEST__STDAFX_H__
